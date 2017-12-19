@@ -6,6 +6,7 @@
     </types>
     <types>
         <members>Dwolla_API_Connection__c</members>
+        <members>Dwolla_API_Session__c</members>
         <name>CustomObject</name>
     </types>
     <types>
