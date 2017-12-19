@@ -8,5 +8,10 @@
         <members>Dwolla_API_Connection__c</members>
         <name>CustomObject</name>
     </types>
+    <types>
+        <members>Dwolla_API</members>
+        <members>Dwolla_OAuth</members>
+        <name>RemoteSiteSetting</name>
+    </types>
     <version>36.0</version>
 </Package>

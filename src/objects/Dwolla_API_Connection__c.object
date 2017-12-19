@@ -3,6 +3,42 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <description>Used to configure a connection to the Dwolla API. The API Wrapper uses org wide defaults only.</description>
     <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>API_Endpoint__c</fullName>
+        <externalId>false</externalId>
+        <label>API Endpoint</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>OAuth_Endpoint__c</fullName>
+        <externalId>false</externalId>
+        <label>OAuth Endpoint</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>OAuth_Key__c</fullName>
+        <externalId>false</externalId>
+        <label>OAuth Key</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OAuth_Secret__c</fullName>
+        <externalId>false</externalId>
+        <label>OAuth Secret</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Dwolla API Connection</label>
     <visibility>Public</visibility>
 </CustomObject>
