@@ -38,8 +38,8 @@ public class ApexDwolla_API_Parser {
         '    "timezoneOffset": -6,\n' +
         '    "type": "Commercial"\n' +
         '}';
-    
-    public static ApexDwolla_API_Wrapper.Session parseGetAuthorizationToken(String jsonResponse){
+
+    public static ApexDwolla_API_Wrapper.Session parseGetSession(String jsonResponse){
         JSONParser parser = JSON.createParser(jsonResponse);
         ApexDwolla_API_Wrapper.Session session;
         if (parser.nextToken() == JSONToken.START_OBJECT) {
@@ -47,7 +47,7 @@ public class ApexDwolla_API_Parser {
         }
         return session;
     }
-    
+
     public static ApexDwolla_API_Wrapper.Account parseGetAccountDetails(String jsonResponse){
         JSONParser parser = JSON.createParser(jsonResponse);
         ApexDwolla_API_Wrapper.Account acct;
