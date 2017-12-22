@@ -1,4 +1,14 @@
 public class ApexDwolla_API_Wrapper {
+    public class CalloutError{
+        public string code;
+        public string message;
+        
+        public calloutError(String c, String m){
+            this.code = c;
+            this.message = m;
+        }
+    }
+    
     public class Session {
         public String access_token;
         public String token_type;
@@ -9,7 +19,12 @@ public class ApexDwolla_API_Wrapper {
             this.access_token = at;
             this.token_type = tt;
             this.expires_in = ei;
-            
+        }
+        
+        public Session(String at, String tt, DateTime et){
+            this.access_token = at;
+            this.token_type = tt;
+            this.expiration_time = et;
         }
         
         public void setExpirationTime(){
