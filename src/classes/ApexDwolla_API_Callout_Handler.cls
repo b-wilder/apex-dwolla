@@ -14,6 +14,7 @@ public class ApexDwolla_API_Callout_Handler {
         }
         else{
             HttpResponse res = getSessionResponse();
+            System.debug('res: ' + res);
             if(res != NULL && res.getStatusCode() == 200){
                 String jsonResponse = res.getBody();
 
@@ -56,7 +57,7 @@ public class ApexDwolla_API_Callout_Handler {
     public static void updateSessionInfo(Dwolla_API_Session__c savedSession, ApexDwolla_API_Wrapper.Session session){
         savedSession.Authorization_Token__c = session.access_token;
         savedSession.Expiration_Time__c = session.expiration_time;
-        update savedSession;
+        upsert savedSession;
     }
     //public static ApexDwolla_API_Wrapper.Account getAccountDetails(){
       //  return new ApexDwolla_API_Wrapper.Account();

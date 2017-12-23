@@ -48,12 +48,12 @@ public class ApexDwolla_API_Parser {
         return session;
     }
 
-    public static ApexDwolla_API_Wrapper.Account parseGetAccountDetails(String jsonResponse){
+    /*public static ApexDwolla_API_Wrapper.Account parseGetAccountDetails(String jsonResponse){
         JSONParser parser = JSON.createParser(jsonResponse);
         ApexDwolla_API_Wrapper.Account acct;
         if (parser.nextToken() == JSONToken.START_OBJECT) {
              acct = (ApexDwolla_API_Wrapper.Account)parser.readValueAs(ApexDwolla_API_Wrapper.Account.class);
         }
         return acct;
-    }
+    }*/
 }

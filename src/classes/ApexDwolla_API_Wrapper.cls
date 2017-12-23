@@ -8,11 +8,6 @@ public class ApexDwolla_API_Wrapper {
     public class CalloutError extends CalloutResponse{
         public string code;
         public string message;
-        
-        public calloutError(String c, String m){
-            this.code = c;
-            this.message = m;
-        }
     }
     
     public class Session extends CalloutResponse{
@@ -20,12 +15,6 @@ public class ApexDwolla_API_Wrapper {
         public String token_type;
         public Integer expires_in;
         public DateTime expiration_time;
-        
-        public Session(String at, String tt, Integer ei){
-            this.access_token = at;
-            this.token_type = tt;
-            this.expires_in = ei;
-        }
         
         public Session(String at, String tt, DateTime et){
             this.access_token = at;
@@ -43,12 +32,5 @@ public class ApexDwolla_API_Wrapper {
 		Public String name;
 		Public Integer timezoneOffset;
 		Public String type;
-        
-        public Account(String i, String n, Integer to, String t){
-            this.id = i;
-            this.name = n;
-            this.timezoneOffset = to;
-            this.type = t;
-        }
 	}
 }
