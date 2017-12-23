@@ -1,5 +1,11 @@
 public class ApexDwolla_API_Wrapper {
-    public class CalloutError{
+    public virtual class CalloutResponse{
+        public HttpResponse res;
+        public void setHttpResponse(HttpResponse r){
+            this.res = r;
+        }
+    }
+    public class CalloutError extends CalloutResponse{
         public string code;
         public string message;
         
@@ -9,7 +15,7 @@ public class ApexDwolla_API_Wrapper {
         }
     }
     
-    public class Session {
+    public class Session extends CalloutResponse{
         public String access_token;
         public String token_type;
         public Integer expires_in;
@@ -32,7 +38,7 @@ public class ApexDwolla_API_Wrapper {
         }
     }
     
-    public class Account {
+    public class Account extends CalloutResponse{
 		Public String id;
 		Public String name;
 		Public Integer timezoneOffset;
