@@ -15,9 +15,6 @@ public class ApexDwolla_API_Callout_Helper {
         try{
             HttpResponse res = h.send(req);
             handleResponseStatus(res);
-            if(logLevel.Log_All__c){
-                generateApiLog(res);
-            }
             return res;
         }
         catch(Exception e){
@@ -36,8 +33,11 @@ public class ApexDwolla_API_Callout_Helper {
         if(logLevel.Log_Errors__c || logLevel.Log_All__c){
             Integer statusCode = res.getStatusCode();
             String statusCodeStr = String.valueOf(statusCode);
-            if(statusCode == 200){
+            if(statusCode == 200 && !logLevel.Log_All__c){
                 return;
+            }
+            else if(statusCode == 200){
+                generateApiLog(res);
             }
             else{
                 //Create Dwolla_API_Log__c record with callout error information
