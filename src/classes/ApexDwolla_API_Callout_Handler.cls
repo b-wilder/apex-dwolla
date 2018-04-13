@@ -63,6 +63,7 @@ public class ApexDwolla_API_Callout_Handler {
             String jsonResponse = res.getBody();
             
             accountDetails = ApexDwolla_API_Parser.parseGetAccountDetails(jsonResponse);
+            accountDetails.setHttpResponse(res);
             return accountDetails;
         }
         else{
