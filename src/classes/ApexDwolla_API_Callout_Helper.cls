@@ -1,12 +1,18 @@
 public class ApexDwolla_API_Callout_Helper {
+    
     public static HttpRequest buildHttpRequest(String endpoint, String method, map<String,String> headers, String body){
+        HttpRequest req = buildHttpRequest(endpoint, method, headers);
+        req.setBody(body);
+        return req;
+    }
+    
+    public static HttpRequest buildHttpRequest(String endpoint, String method, map<String,String> headers){
         HttpRequest req = new HttpRequest();
         req.setEndpoint(endpoint);
         req.setMethod(method);
         for(String headerKey : headers.keySet()){
             req.setHeader(headerKey, headers.get(headerKey));
         }
-        req.setBody(body);
         return req;
     }
     

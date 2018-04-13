@@ -30,7 +30,7 @@ public class ApexDwolla_API_Wrapper {
     public class Account extends CalloutResponse{
 		Public String id;
 		Public String name;
-		Public Integer timezoneOffset;
+		Public Decimal timezoneOffset;
 		Public String type;
 	}
 }

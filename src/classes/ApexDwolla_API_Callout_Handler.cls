@@ -37,7 +37,7 @@ public class ApexDwolla_API_Callout_Handler {
         // Instantiate a new http object
         Http h = new Http();
         
-        // Instantiate a new HTTP request, specify the method (GET) as well as the endpoint
+        // Instantiate a new HTTP request, specify the method (POST) as well as the endpoint
         String requestBody =
             'client_id='+EncodingUtil.urlEncode(credentials.OAuth_Key__c, 'UTF-8') +
             '&client_secret='+EncodingUtil.urlEncode(credentials.OAuth_Secret__c, 'UTF-8') +
@@ -48,6 +48,46 @@ public class ApexDwolla_API_Callout_Handler {
             new map<String,String>{'Content-Type' => 'application/x-www-form-urlencoded'},
             requestBody
         );
+        
+        // Send the request, and return a response
+        HttpResponse res = ApexDwolla_API_Callout_Helper.makeCallout(h, req);
+        return res;
+    }
+    
+    public static ApexDwolla_API_Wrapper.Account getAccountDetails(ApexDwolla_API_Wrapper.Session session, String accountId){
+        HttpResponse res = getAccountDetailsResponse(session, accountId);
+        System.debug('res: ' + res);
+        
+        ApexDwolla_API_Wrapper.Account accountDetails;
+        if(res != NULL && res.getStatusCode() == 200){
+            String jsonResponse = res.getBody();
+            
+            accountDetails = ApexDwolla_API_Parser.parseGetAccountDetails(jsonResponse);
+            return accountDetails;
+        }
+        else{
+            return null;
+        }
+    }
+    
+    public static HttpResponse getAccountDetailsResponse(ApexDwolla_API_Wrapper.Session session, String accountId){
+        Dwolla_API_Connection__c  credentials = Dwolla_API_Connection__c.getOrgDefaults();
+
+        // Instantiate a new http object
+        Http h = new Http();
+        
+        // Instantiate a new HTTP request, specify the method (GET) as well as the endpoint
+        HttpRequest req = ApexDwolla_API_Callout_Helper.buildHttpRequest(
+            credentials.API_Endpoint__c + ApexDwolla_API_Constants.getAccountDetailsEndpoint(accountId),
+            'GET',
+            new map<String,String>{
+                'Accept' => 'application/vnd.dwolla.v1.hal+json',
+                'Authorization' => 'Bearer ' + session.access_token
+            }
+        );
+        
+        System.debug('req:\n' + req);
+        System.debug('req authorization header:\n' + req.getHeader('Authorization'));
         
         // Send the request, and return a response
         HttpResponse res = ApexDwolla_API_Callout_Helper.makeCallout(h, req);
